@@ -1,0 +1,39 @@
+DHCP config for router/Layer 3 switch
+
+en
+conf t
+ip dhcp excluded-address <INPUT-DESIRED-IP>
+ip dhcp pool <POOL-NAME>
+netowrk <NETWORK_ADDRESS> <SUBNET_MASK>
+default-router <DEFAULT_GATEWAY>
+dns-server <DNS_SERVER_ADDRESS>
+domain-name <DOMAIN_NAME>
+lease <DAYS> <HOURS>
+exit
+
+    if dhcp is in another router/Layer 3 switch do this
+
+int <INPUT-DESIRED-INTERFACE>
+ip helper-address <DHCP_SERVER_IP_ADDRESS> 
+exit
+
+    if multiple vlans do this
+
+ip dhcp pool VLAN10
+network <NETWORK_ADDRESS> <SUBNET_MASK>
+default-router <DHCP_SERVER_IP>
+exit
+
+ip dhcp pool VLAN20
+network <NETWORK_ADDRESS> <SUBNET_MASK>
+default-router <DHCP_SERVER_IP>
+exit
+
+    Snooping DHCP 
+
+int <INPUT-DESIRED-INTERFACE>
+ip dhcp snooping trust
+exit
+
+
+

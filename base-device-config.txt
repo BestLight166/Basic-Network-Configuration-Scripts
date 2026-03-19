@@ -1,0 +1,22 @@
+Basic Config Routers/switches 
+
+enable
+conf t
+hostname <NAME_DESIRED>
+no ip domain lookup
+
+enable secret <Password_Desired>
+line vty 0 4
+password <Password_Desired>
+login
+exit
+line con 0 
+password <Password_Desired>
+login
+exit
+
+int <INPUT_DESIRED_INTERFACE>
+ip address <INPUT_DESIRED_IP_ADDRESS> <INPUT_DESIRED_SUBNET_MASK>
+no shutdown
+exit    
+

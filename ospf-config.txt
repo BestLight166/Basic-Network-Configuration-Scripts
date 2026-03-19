@@ -1,0 +1,26 @@
+OSPF configuration script Router
+
+router ospf 1
+router id <desired_id>
+network <internet_ip_range>
+network <interface_ip_range>
+exit
+int <desired_interface>
+ip ospf 1 area 0
+exit
+
+area 0 authentication
+int <desired_interface>
+ip ospf authentication-key <Desired_Password>
+exit
+
+OSPF configuration script Switch
+
+ip routing
+router ospf 1
+router id <desired_id>
+network <vlan_ip_range>
+network <outgoing_ip_range>
+exit
+int vlan <vlan_id>
+ip ospf 1 area 0
